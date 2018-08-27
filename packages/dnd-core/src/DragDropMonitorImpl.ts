@@ -161,6 +161,10 @@ export default class DragDropMonitorImpl implements DragDropMonitor {
 		return this.store.getState().dragOperation.dropResult
 	}
 
+	public getCurrentDropEffect() {
+	  return this.store.getState().dragOperation.dropEffect
+	}
+
 	public didDrop() {
 		return this.store.getState().dragOperation.didDrop
 	}

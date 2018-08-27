@@ -4,6 +4,7 @@ import {
 	PUBLISH_DRAG_SOURCE,
 	HOVER,
 	END_DRAG,
+	DRAG,
 	DROP,
 } from '../actions/dragDrop'
 import { REMOVE_TARGET } from '../actions/registry'
@@ -20,6 +21,7 @@ export interface State {
 	sourceId: string | null
 	targetIds: string[]
 	dropResult: any
+	dropEffect: string | null
 	didDrop: boolean
 	isSourcePublic: boolean | null
 }
@@ -30,6 +32,7 @@ const initialState: State = {
 	sourceId: null,
 	targetIds: [],
 	dropResult: null,
+	dropEffect: null,
 	didDrop: false,
 	isSourcePublic: null,
 }
@@ -44,6 +47,7 @@ export default function dragOperation(
 		targetIds: string[]
 		isSourcePublic: boolean
 		dropResult: any
+		dropEffect: string
 	}>,
 ) {
 	const { payload } = action
@@ -57,6 +61,11 @@ export default function dragOperation(
 				isSourcePublic: payload.isSourcePublic,
 				dropResult: null,
 				didDrop: false,
+			}
+		case DRAG:
+			return {
+				...state,
+				dropEffect: payload.dropEffect,
 			}
 		case PUBLISH_DRAG_SOURCE:
 			return {
@@ -90,6 +99,7 @@ export default function dragOperation(
 				item: null,
 				sourceId: null,
 				dropResult: null,
+				dropEffect: null,
 				didDrop: false,
 				isSourcePublic: null,
 				targetIds: [],

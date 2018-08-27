@@ -68,6 +68,10 @@ export interface DragDropMonitor {
 	 */
 	getDropResult(): any
 	/**
+	 * Returns dropEffect for current drag operation.
+	 */
+	getCurrentDropEffect(): string | null
+	/**
 	 * Returns true if some drop target has handled the drop event, false otherwise. Even if a target did not return a drop result,
 	 * didDrop() returns true. Use it inside endDrag() to test whether any drop target has handled the drop. Returns false if called
 	 * outside endDrag().
@@ -154,6 +158,10 @@ export interface HoverOptions {
 	clientOffset?: XYCoord
 }
 
+export interface DragPayload {
+	dropEffect: string
+}
+
 export interface DropPayload {
 	dropResult: any
 }
@@ -168,6 +176,7 @@ export interface SourceIdPayload {
 
 export interface DragDropActions {
 	beginDrag(sourceIds: string[], options?: any): Action<BeginDragPayload>
+	drag(dropEffect: string): Action<DropPayload>
 	publishDragSource(): SentinelAction
 	hover(targetIds: string[], options?: any): Action<HoverPayload>
 	drop(options?: any): void

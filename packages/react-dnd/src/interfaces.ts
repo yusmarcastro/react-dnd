@@ -148,6 +148,11 @@ export interface DropTargetMonitor {
 	getDropResult(): any
 
 	/**
+	 * Returns dropEffect for current drag operation.
+	 */
+	getCurrentDropEffect(): string | null
+
+	/**
 	 *  Returns true if some drop target has handled the drop event, false otherwise. Even if a target did not return a drop result,
 	 * didDrop() returns true. Use it inside drop() to test whether any nested drop target has already handled the drop. Returns false
 	 * if called outside drop().

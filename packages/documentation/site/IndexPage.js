@@ -34,6 +34,8 @@ const Examples = {
 	DUSTBIN_IFRAME: require('../examples/01 Dustbin/Single Target in iframe')
 		.default,
 	DUSTBIN_COPY_OR_MOVE: require('../examples/01 Dustbin/Copy or Move').default,
+	DUSTBIN_COPY_OR_MOVE_RESTRICTED: require('../examples/01 Dustbin/Copy or Move restricted')
+		.default,
 	DUSTBIN_MULTIPLE_TARGETS: require('../examples/01 Dustbin/Multiple Targets')
 		.default,
 	DUSTBIN_STRESS_TEST: require('../examples/01 Dustbin/Stress Test').default,

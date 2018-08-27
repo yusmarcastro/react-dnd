@@ -5,6 +5,7 @@ import {
 	BeginDragPayload,
 	BeginDragOptions,
 	SentinelAction,
+	DragPayload,
 	DropPayload,
 	HoverPayload,
 	HoverOptions,
@@ -15,6 +16,7 @@ import isObject from 'lodash/isObject'
 import matchesType from '../utils/matchesType'
 
 export const BEGIN_DRAG = 'dnd-core/BEGIN_DRAG'
+export const DRAG = 'dnd-core/DRAG'
 export const PUBLISH_DRAG_SOURCE = 'dnd-core/PUBLISH_DRAG_SOURCE'
 export const HOVER = 'dnd-core/HOVER'
 export const DROP = 'dnd-core/DROP'
@@ -88,6 +90,15 @@ export default function createDragDropActions<Context>(
 				return
 			}
 			return { type: PUBLISH_DRAG_SOURCE }
+		},
+
+		drag(dropEffect: string): Action<DragPayload> {
+			return {
+				type: DRAG,
+				payload: {
+					dropEffect,
+				},
+			}
 		},
 
 		hover(

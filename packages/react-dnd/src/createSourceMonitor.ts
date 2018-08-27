@@ -109,6 +109,10 @@ class SourceMonitor implements DragSourceMonitor {
 		return this.internalMonitor.getDropResult()
 	}
 
+  public getCurrentDropEffect() {
+    return this.internalMonitor.getCurrentDropEffect()
+  }
+
 	public didDrop() {
 		return this.internalMonitor.didDrop()
 	}

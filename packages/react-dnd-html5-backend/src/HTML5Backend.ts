@@ -152,6 +152,7 @@ export default class HTML5Backend implements Backend {
 		if (!target.addEventListener) {
 			return
 		}
+		target.addEventListener('drag', this.handleDrag)
 		target.addEventListener('dragstart', this.handleTopDragStart)
 		target.addEventListener('dragstart', this.handleTopDragStartCapture, true)
 		target.addEventListener('dragend', this.handleTopDragEndCapture, true)
@@ -169,6 +170,7 @@ export default class HTML5Backend implements Backend {
 		if (!target.removeEventListener) {
 			return
 		}
+		target.removeEventListener('drag', this.handleDrag)
 		target.removeEventListener('dragstart', this.handleTopDragStart)
 		target.removeEventListener(
 			'dragstart',
@@ -481,6 +483,16 @@ export default class HTML5Backend implements Backend {
 			// If by this time no drag source reacted, tell browser not to drag.
 			e.preventDefault()
 		}
+	}
+
+	@autobind
+	private handleDrag(e: any) {
+		if (!this.monitor.isDragging()) {
+			return
+		}
+
+		this.altKeyPressed = e.altKey
+		this.actions.drag(this.getCurrentDropEffect())
 	}
 
 	@autobind

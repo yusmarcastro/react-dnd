@@ -126,6 +126,10 @@ export const ExamplePages = [
 				location: 'examples-dustbin-copy-or-move.html',
 				title: 'Copy or Move',
 			},
+			DUSTBIN_COPY_OR_MOVE_RESTRICTED: {
+				location: 'examples-dustbin-copy-or-move-restricted.html',
+				title: 'Copy or Move restricted',
+			},
 			DUSTBIN_MULTIPLE_TARGETS: {
 				location: 'examples-dustbin-multiple-targets.html',
 				title: 'Multiple Targets',
